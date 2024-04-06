@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
 const Places = require('./models/places')
+const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost:27017/places')
 
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded({ extended: true })) //purkaa req bodyn näkyväksi
+app.use(methodOverride('_method'))
 
 app.listen(3000, () => {
     console.log("Serving on port 3000")
@@ -45,5 +47,22 @@ app.get('/places/:id', async (req, res) => {
     const place = await Places.findById(req.params.id)
     res.render('places/show', { place })
 })
+
+app.get('/places/:id/edit', async (req, res) => {
+    const place = await Places.findById(req.params.id)
+    res.render('places/edit', { place })
+} )
+
+app.put('/places/:id', async (req, res) => {
+    const { id } = req.params
+    const place = await Places.findByIdAndUpdate(id, {...req.body.place})
+    res.redirect(`/places/${place._id}`)
+})
+
+app.delete('/places/:id', async (req, res) => {
+    const { id } = req.params
+    await Places.findByIdAndDelete(id)
+    res.redirect('/places')
+}) 
 
 
