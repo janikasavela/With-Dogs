@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync')
 const { placeSchema } = require('../schemas')
 const ExpressError = require('../utils/ExpressError')
 const Places = require('../models/places')
+const { isLoggedIn } = require('../middleware')
 
 const validatePlace = (req, res, next) => {
     const { error } = placeSchema.validate(req.body)
@@ -20,11 +21,11 @@ router.get('/', catchAsync(async (req, res) => {
     res.render('places/index', {places})
 }))
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('places/new')
 })
 
-router.post('/', validatePlace, catchAsync(async (req, res, next) => {
+router.post('/', isLoggedIn, validatePlace, catchAsync(async (req, res, next) => {
 //    if(!req.body.place) throw new ExpressError('Invalid Place data', 400)
    const place = new Places(req.body.place)
    await place.save()
