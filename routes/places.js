@@ -1,30 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const catchAsync = require('../utils/catchAsync')
-const { placeSchema } = require('../schemas')
-const ExpressError = require('../utils/ExpressError')
 const Places = require('../models/places')
-const { isLoggedIn } = require('../middleware')
+const { isLoggedIn, isAuthor, validatePlace } = require('../middleware')
 
-const validatePlace = (req, res, next) => {
-    const { error } = placeSchema.validate(req.body)
-    if(error) {
-        const msg = error.details.map( el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next()
-    }
-}
-
-const isAuthor = async (req, res, next) => {
-    const { id } = req.params
-    const place = await Places.findById(id)
-    if (!place.author.equals(req.user._id)) {
-        req.flash('error', 'You do not have a permission!')
-        return res.redirect(`/places/${id}`)
-    }
-    next()
-}
 
 router.get('/', catchAsync(async (req, res) => {
     const places = await Places.find({})
@@ -45,7 +24,13 @@ router.post('/', isLoggedIn, validatePlace, catchAsync(async (req, res, next) =>
 }))
 
 router.get('/:id', catchAsync(async (req, res) => {
-    const place = await Places.findById(req.params.id).populate('reviews').populate('author')
+    const place = await Places.findById(req.params.id).populate({
+        path: 'reviews',
+        populate: {
+            path: 'author'
+        }
+    }).populate('author')
+    console.log(place)
     if(!place) {
         req.flash('error', 'Cannot find that place!')
         return res.redirect('/places')
