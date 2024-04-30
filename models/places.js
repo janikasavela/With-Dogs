@@ -4,7 +4,11 @@ const Review = require('./review')
 
 const placesSchema = new Schema({
     title: String,
-    image: String,
+    image: 
+        {
+            url: String,
+            filename: String 
+        },
     description: String,
     location: String,
     author: {

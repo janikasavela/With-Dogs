@@ -10,10 +10,11 @@ module.exports.newForm = (req, res) => {
 }
 
 module.exports.createNew = async (req, res, next) => {
-    //    if(!req.body.place) throw new ExpressError('Invalid Place data', 400)
        const place = new Places(req.body.place)
+       place.image = { url: req.file.path, filename: req.file.filename }
        place.author = req.user._id
        await place.save()
+       console.log(place)
        req.flash('success', 'Succesfully added a new place!')
        res.redirect(`/places/${place._id}`) 
     }
@@ -34,7 +35,7 @@ module.exports.showPlace = async (req, res) => {
 
 module.exports.editForm = async (req, res) => {
     const { id } = req.params
-    const place = await Places.findById(req.params.id)
+    const place = await Places.findById(id)
     if(!place) {
         req.flash('error', 'Cannot find that place!')
         return res.redirect('/places')
@@ -45,6 +46,8 @@ module.exports.editForm = async (req, res) => {
 module.exports.updatePlace = async (req, res) => {
     const { id } = req.params
     const place = await Places.findByIdAndUpdate(id, {...req.body.place})
+    place.image = { url: req.file.path, filename: req.file.filename }
+    await place.save()
     req.flash('success', 'Successfully updated!')
     res.redirect(`/places/${place._id}`)
 }
