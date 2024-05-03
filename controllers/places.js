@@ -1,4 +1,7 @@
 const Places = require('../models/places')
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding")
+const mapBoxToken = process.env.MAPBOX_TOKEN
+const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
 
 module.exports.index = async (req, res) => {
     const places = await Places.find({})
@@ -10,13 +13,19 @@ module.exports.newForm = (req, res) => {
 }
 
 module.exports.createNew = async (req, res, next) => {
+       const geoData = await geocoder.forwardGeocode({
+        query: req.body.place.location,
+        limit: 1
+       }).send()
        const place = new Places(req.body.place)
-       place.image = { url: req.file.path, filename: req.file.filename }
+       place.geometry = geoData.body.features[0].geometry
+       if(req.file) place.image = { url: req.file.path, filename: req.file.filename } 
+       else { place.image.url = "https://images.unsplash.com/photo-1521354465180-c1ceac1d709a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
        place.author = req.user._id
        await place.save()
        console.log(place)
        req.flash('success', 'Succesfully added a new place!')
-       res.redirect(`/places/${place._id}`) 
+       res.redirect(`/places/${place._id}`)  
     }
 
 module.exports.showPlace = async (req, res) => {
