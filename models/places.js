@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Review = require('./review')
 
-const placesSchema = new Schema({
+const opts = { toJSON: { virtuals: true } }
+
+const PlacesSchema = new Schema({
     title: String,
     image: 
         {
@@ -31,9 +33,13 @@ const placesSchema = new Schema({
         ref: 'Review'
     }
     ]
+}, opts)
+
+PlacesSchema.virtual('properties.popUp').get(function () {
+    return `<strong><a href="/places/${this._id}">${this.title}</a><strong><p>${this.description.substring(0,50)}...</p>`
 })
 
-placesSchema.post('findOneAndDelete', async function (doc) {
+PlacesSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {
@@ -43,4 +49,4 @@ placesSchema.post('findOneAndDelete', async function (doc) {
     }
 })
 
-module.exports = mongoose.model('Places', placesSchema)
+module.exports = mongoose.model('Places', PlacesSchema)
