@@ -6,7 +6,10 @@ const map = new mapboxgl.Map({
   zoom: 10
 })
 
-new mapboxgl.Marker()
+map.addControl(new mapboxgl.NavigationControl())
+
+
+new mapboxgl.Marker({color: '#f078aa'})
 .setLngLat(place.geometry.coordinates)
 .setPopup(
   new mapboxgl.Popup({ offset: 25 })

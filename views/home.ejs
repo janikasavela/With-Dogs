@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body>
-    <h1>Travelling With Pets</h1>
-  </body>
-</html>
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/home.css">
+<div class="container">
+  <div class="row justify-content-center"> <!-- justify-content-center keskittää rivin sisällön vaakasuunnassa -->
+    <div class="col-md-6"> <!-- Lisätty col-md-6 määrittelemään sarakkeen leveys keskittämistä varten -->
+      <main class="text-center"> <!-- Lisätty text-center keskittämään sisältö pystysuunnassa -->
+        <p class="lead title">Welcome to With Dogs!</p>
+        <a href="/places" class="btn btn-lg btn-secondary font-weight-bold">Places</a>
+      </main>
+    </div>
+  </div>
+</div>

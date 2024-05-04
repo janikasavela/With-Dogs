@@ -1,9 +1,12 @@
 <%layout('layouts/boilerplate')%>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center"> 
 <h1>Register</h1>
 <form action="/register" class="validated-form" method="POST" novalidate>
     <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" required>
+        <input type="text" class="form-control" id="username" name="username" required autofocus>
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -13,5 +16,10 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required>
     </div>
-    <button class="btn btn-success">Register</button>
+    <div class="d-grid justify-content-center"> 
+        <button class="btn btn-success">Register</button>
+    </div>
 </form>
+</div>
+</div>
+</div>
