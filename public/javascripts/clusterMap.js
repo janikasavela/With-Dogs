@@ -37,7 +37,7 @@ map.on('load', () => {
             'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#f078aa',
+                '#D05663',
                 100,
                 '#f1f075',
                 750,
@@ -73,7 +73,7 @@ map.on('load', () => {
         source: 'places',
         filter: ['!', ['has', 'point_count']],
         paint: {
-            'circle-color': '#f078aa',
+            'circle-color': '#D05663',
             'circle-radius': 6,
             'circle-stroke-width': 2,
             'circle-stroke-color': '#fff'

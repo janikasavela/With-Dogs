@@ -1,11 +1,18 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/home.css">
 <div class="container">
-  <div class="row justify-content-center"> <!-- justify-content-center keskittää rivin sisällön vaakasuunnassa -->
+  <div class="row justify-content-left"> <!-- justify-content-center keskittää rivin sisällön vaakasuunnassa -->
     <div class="col-md-6"> <!-- Lisätty col-md-6 määrittelemään sarakkeen leveys keskittämistä varten -->
       <main class="text-center"> <!-- Lisätty text-center keskittämään sisältö pystysuunnassa -->
-        <p class="lead title">Welcome to With Dogs!</p>
-        <a href="/places" class="btn btn-lg btn-secondary font-weight-bold">Places</a>
+
+       <div class="container">
+        <div class="jumbotron bg-light p-5">
+          <h1 class="display-5 mb-2 text-green">Welcome to With Dogs!</h1>
+          <p class="lead text-green">On our website you can browse dog-friendly places. As a logged-in user you can add places and give reviews.</p>
+          <a href="/places" class="btn btn-outline-teal btn-lg" >See Places</a>
+        </div>
+       </div>
+
       </main>
     </div>
   </div>
