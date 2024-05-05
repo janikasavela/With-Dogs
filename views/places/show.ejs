@@ -4,9 +4,8 @@
 
 <div class="row">
     <div class="col-6">
-      <div id="map" style="width: 400px; height: 300px;"></div>
-        <div class="card mb-3">
-            <img src="<%= place.image.url %>" class="card-img-top" alt="...">
+        <div class="card mb-3 py-2">
+            <img src="<%= place.image.url %>" class="card-img-top mx-auto" alt="..." style="max-width:70%;">
             <div class="card-body">
               <h5 class="card-title"><%= place.title %></h5>
               <p class="card-text"><%= place.description %></p>
@@ -18,19 +17,21 @@
             </ul>
             <% if( currentUser && place.author.equals(currentUser)) { %>
             <div class="card-body">
-                <a class="card-link btn btn-info" href="/places/<%= place._id %>/edit">Edit</a>
+                <a class="card-link btn btn-gray" href="/places/<%= place._id %>/edit">Edit</a>
                 <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-info">Delete</button>
                     </form>
             </div>
             <% } %>
           </div>
   </div>
   <div class="col-6">
+    <div id="map" style="width: 400px; height: 300px;"></div>
+
     <% if(currentUser) { %>
-    <h2>Leave a review</h2>
+    <h2 class="my-2 text-green">Leave a review</h2>
     <form action="/places/<%= place._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-      <div class="mb-3">
+      <div>
       <fieldset class="starability-basic">
         <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
         <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -49,7 +50,7 @@
           <label class="form-label" for="body">Review</label>
           <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
          </div>
-         <button class="btn btn-success">Submit</button>
+         <button class="btn btn-teal">Submit</button>
     </form>
     <% } %>
     <% for(let review of place.reviews){ %>
@@ -61,7 +62,7 @@
   </p>        <p class="card-text">Review: <%= review.body %> </p>
         <% if( currentUser && review.author.equals(currentUser)) { %>
         <form action="/places/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-        <button class="btn btn-sm btn-danger">Delete</button>
+        <button class="btn btn-sm btn-info">Delete</button>
         </form>
         <% } %>
       </div>

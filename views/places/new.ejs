@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
   <div class="row">
-    <h1 class="text-center">New Place</h1>
+    <h1 class="text-center text-green">New Place</h1>
     <div class="col-6 offset-3">
         <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
@@ -9,10 +9,12 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location</label>
+                <small class="text-muted">
+                    (If the destination does not have an exact address, enter the address that is as close as possible to the destination!)</small>
                 <input class="form-control" type="text" id="location" name="place[location]" required>
             </div>
          <div class="mb-3">
-                <label for="image" class="form-label">Default file input example</label>
+                <label for="image" class="form-label">Add image</label>
                 <input class="form-control" type="file" id="image" name="image" >
               </div> 
             <!-- <input type="file" name="image" id=""> -->
@@ -24,10 +26,9 @@
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" type="text" id="description" name="place[description]" required></textarea>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-center">
                 <button class="btn btn-info">Add Place</button>
             </div>
-        </form>
-        <a href="/places">All Places</a>    
+        </form>  
     </div>
   </div>

@@ -13,6 +13,18 @@ map.on('load', () => {
     // Add a new source from our GeoJSON data and
     // set the 'cluster' option to true. GL-JS will
     // add the point_count property to your source data.
+
+    map.loadImage(
+        
+        '/assets/dog-face-svgrepo-com.png',
+        (error, image) => {
+            if (error) throw error;
+
+            // Add the image to the map style.
+            map.addImage('cat', image); })
+
+
+    
     map.addSource('places', {
         type: 'geojson',
         // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
@@ -67,7 +79,7 @@ map.on('load', () => {
         }
     });
 
-    map.addLayer({
+/*   map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
         source: 'places',
@@ -77,6 +89,19 @@ map.on('load', () => {
             'circle-radius': 6,
             'circle-stroke-width': 2,
             'circle-stroke-color': '#fff'
+        }
+    });
+ */
+
+    map.addLayer({
+        id: 'unclustered-point',
+        type: 'symbol',
+        source: 'places',
+        filter: ['!', ['has', 'point_count']],
+        layout: {
+            'icon-image': 'cat', // Tässä 'dog-park' on esimerkki koiran kuvakkeesta Mapboxista
+            'icon-size': 0.05, // Voit säätää kuvakkeen kokoa tarpeen mukaan
+            'icon-allow-overlap': true
         }
     });
 
