@@ -1,15 +1,20 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/home.css">
 <div class="container">
-  <div class="row justify-content-left"> <!-- justify-content-center keskittää rivin sisällön vaakasuunnassa -->
-    <div class="col-md-6"> <!-- Lisätty col-md-6 määrittelemään sarakkeen leveys keskittämistä varten -->
-      <main class="text-center"> <!-- Lisätty text-center keskittämään sisältö pystysuunnassa -->
-
+  <div class="row justify-content-left">
+    <div class="col-md-6">
+      <main class="text-center"> 
        <div class="container">
         <div class="jumbotron bg-light p-5">
-          <h1 class="display-5 mb-2 text-green">Welcome to With Dogs!</h1>
+          <h1 class="display-6 mb-2 text-green">Welcome to With Dogs!</h1>
           <p class="lead text-green">On our website you can browse dog-friendly places. As a logged-in user you can add places and give reviews.</p>
-          <a href="/places" class="btn btn-outline-teal btn-lg" >See Places</a>
+          <hr>
+          <p class="text-green">Let's make traveling with dogs easy together!</p>
+          <a href="/places" class="btn btn-outline-teal" >See Places</a>
+          <% if(!currentUser) {%>
+          <a href="/login" class="btn btn-outline-teal" >Login</a>
+          <a href="/register" class="btn btn-outline-teal" >Register</a>
+          <% } %>
         </div>
        </div>
 
@@ -17,3 +22,4 @@
     </div>
   </div>
 </div>
+
