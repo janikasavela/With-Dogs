@@ -22,6 +22,11 @@ const PlacesSchema = new Schema({
             required: true
         }
     },
+    category: {
+            type: String,
+            enum: ['Store', 'Grocery', 'Hiking', 'Hotel', 'Swimming place', 'Skiing', 'Restaraunt', 'Cafe', 'Other services'],
+            required: true
+    },
     description: String,
     location: String,
     author: {

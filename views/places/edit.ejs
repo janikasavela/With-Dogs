@@ -1,19 +1,36 @@
 <% layout('layouts/boilerplate')%>
 <div class="row">
-        <h1 class="text-center">Edit Place</h1>
+        <h1 class="text-center text-green">Edit Place</h1>
         <div class="col-6 offset-3">
             <form action="/places/<%= place._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="place[title]" value="<%= place.title %>" required>
+                    <input class="form-control" type="text" id="title" name="place[title]" value="<%= place.title %>" required autofocus>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="location">Location</label>
                     <input class="form-control" type="text" id="location" name="place[location]" value="<%= place.location %>" required>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="image">Change Image</label>
-                    <input type="file" name="image" id="image">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-list ml-5"></i>
+                    </span>
+                    <select class="form-select" aria-label="Default select example" name="place[category]" required>
+                        <option value="Hotel" <%= place.category === 'Hotel' ? 'selected' : '' %>>Hotel</option>
+                        <option value="Store" <%= place.category === 'Store' ? 'selected' : '' %>>Store</option>
+                        <option value="Grocery" <%= place.category === 'Grocery' ? 'selected' : '' %>>Grocery</option>
+                        <option value="Hiking" <%= place.category === 'Hiking' ? 'selected' : '' %>>Hiking</option>
+                        <option value="Swimming place" <%= place.category === 'Swimming place' ? 'selected' : '' %>>Swimming place</option>
+                        <option value="Skiing" <%= place.category === 'Skiing' ? 'selected' : '' %>>Skiing</option>
+                        <option value="Restaurant" <%= place.category === 'Restaurant' ? 'selected' : '' %>>Restaurant</option>
+                        <option value="Cafe" <%= place.category === 'Cafe' ? 'selected' : '' %>>Cafe</option>
+                        <option value="Other services" <%= place.category === 'Other services' ? 'selected' : '' %>>Other services</option>
+                    </select>
+                </div>
+
+                  <div class="input-group mb-3">
+                <span class="input-group-text gasp-5">
+                        <i class="fa-solid fa-image"></i></span>
+                    <input class="form-control" type="file" name="image" id="image">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
@@ -23,6 +40,5 @@
                     <button class="btn btn-info">Update Place</button>
                 </div>
             </form>
-            <a href="/places/<%= place._id %>">Back to Place</a>
         </div>
       </div>

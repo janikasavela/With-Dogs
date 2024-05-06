@@ -5,26 +5,39 @@
         <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="place[title]" required>
+                <input class="form-control" type="text" id="title" name="place[title]" required autofocus>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location</label>
-                <small class="text-muted">
-                    (If the destination does not have an exact address, enter the address that is as close as possible to the destination!)</small>
                 <input class="form-control" type="text" id="location" name="place[location]" required>
+                <small class="text-muted">
+                    If the destination does not have an exact address, enter the address that is as close as possible to the destination!</small>
             </div>
-         <div class="mb-3">
-                <label for="image" class="form-label">Add image</label>
-                <input class="form-control" type="file" id="image" name="image" >
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-list ml-5"></i>
+                </span>
+            <select class="form-select" aria-label="Default select example" name="place[category]" required>
+                <option value="Hotel" selected>Hotel</option>
+                <option value="Store">Store</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Hiking">Hiking</option>
+                <option value="Swimming place">Swimmin place</option>
+                <option value="Skiing">Skiing</option>
+                <option value="Restaraunt">Restaraunt</option>
+                <option value="Cafe">Cafe</option>
+                <option value="Other services">Other services</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-image"></i></span>
+                <input class="form-control" type="file" id="image" name="image">
               </div> 
-            <!-- <input type="file" name="image" id=""> -->
-          <!--   <div class="mb-3">
-                <label class="form-label" for="image">Image Url</label>
-                <input class="form-control" type="text" id="image" name="place[image]" required>
-            </div> -->
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" type="text" id="description" name="place[description]" required></textarea>
+                <small class="text-muted">
+                    Describe the service as comprehensively as possible. For example, it would be useful for restaurants to add information on whether dogs are allowed inside or only on the terrace.</small>
             </div>
             <div class="mb-3 text-center">
                 <button class="btn btn-info">Add Place</button>
