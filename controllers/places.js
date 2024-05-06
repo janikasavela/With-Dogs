@@ -55,7 +55,7 @@ module.exports.editForm = async (req, res) => {
 module.exports.updatePlace = async (req, res) => {
     const { id } = req.params
     const place = await Places.findByIdAndUpdate(id, {...req.body.place})
-    place.image = { url: req.file.path, filename: req.file.filename }
+    if(req.file) { place.image = { url: req.file.path, filename: req.file.filename } }
     await place.save()
     req.flash('success', 'Successfully updated!')
     res.redirect(`/places/${place._id}`)

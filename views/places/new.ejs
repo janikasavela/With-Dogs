@@ -19,25 +19,39 @@
             <select class="form-select" aria-label="Default select example" name="place[category]" required>
                 <option value="Hotel" selected>Hotel</option>
                 <option value="Store">Store</option>
-                <option value="Grocery">Grocery</option>
                 <option value="Hiking">Hiking</option>
                 <option value="Swimming place">Swimmin place</option>
                 <option value="Skiing">Skiing</option>
                 <option value="Restaraunt">Restaraunt</option>
                 <option value="Cafe">Cafe</option>
+                <option value="Airbnb">Airbnb</option>
+                <option value="Cabin">Cabin</option>
                 <option value="Other services">Other services</option>
               </select>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">
                     <i class="fa-solid fa-image"></i></span>
-                <input class="form-control" type="file" id="image" name="image">
+                <input class="form-control" type="file" id="image" name="image" required>
               </div> 
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" type="text" id="description" name="place[description]" required></textarea>
                 <small class="text-muted">
                     Describe the service as comprehensively as possible. For example, it would be useful for restaurants to add information on whether dogs are allowed inside or only on the terrace.</small>
+            </div>
+            <p class="text-info">Optional additional service information:</p>
+        <div class="mb-3">
+                <label class="form-label" for="url">Enter an URL</label>
+                <input class="form-control" type="url" id="url" name="place[url]"  value="https://">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="number">Phonenumber</label>
+                <input class="form-control" type="text" id="number" name="place[pnumber]">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="place[email]">
             </div>
             <div class="mb-3 text-center">
                 <button class="btn btn-info">Add Place</button>

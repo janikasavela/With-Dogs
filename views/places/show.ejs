@@ -13,7 +13,16 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-muted"><%= place.location %></li>
               <li class="list-group-item">Added by <%= place.author.username %></li>
-              <li class="list-group-item">A third item</li>
+              <li class="list-group-item"><%= place.category %></li>
+              <% if(place.url) {%>
+              <li class="list-group-item"><a href="<%=place.url%>"><%= place.url %></a></li>
+              <% } %>
+              <% if(place.pnumber) {%>
+                <li class="list-group-item"><%= place.pnumber %></li>
+                <% } %>
+                <% if(place.email) {%>
+                  <li class="list-group-item"><%= place.email %></li>
+                  <% } %> 
             </ul>
             <% if( currentUser && place.author.equals(currentUser)) { %>
             <div class="card-body">

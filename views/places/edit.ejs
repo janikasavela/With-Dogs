@@ -17,25 +17,40 @@
                     <select class="form-select" aria-label="Default select example" name="place[category]" required>
                         <option value="Hotel" <%= place.category === 'Hotel' ? 'selected' : '' %>>Hotel</option>
                         <option value="Store" <%= place.category === 'Store' ? 'selected' : '' %>>Store</option>
-                        <option value="Grocery" <%= place.category === 'Grocery' ? 'selected' : '' %>>Grocery</option>
                         <option value="Hiking" <%= place.category === 'Hiking' ? 'selected' : '' %>>Hiking</option>
                         <option value="Swimming place" <%= place.category === 'Swimming place' ? 'selected' : '' %>>Swimming place</option>
                         <option value="Skiing" <%= place.category === 'Skiing' ? 'selected' : '' %>>Skiing</option>
                         <option value="Restaurant" <%= place.category === 'Restaurant' ? 'selected' : '' %>>Restaurant</option>
                         <option value="Cafe" <%= place.category === 'Cafe' ? 'selected' : '' %>>Cafe</option>
+                        <option value="Airbnb" <%= place.category === 'Airbnb' ? 'selected' : '' %>>Airbnb</option>
+                        <option value="Cabin" <%= place.category === 'Cabin' ? 'selected' : '' %>>Cabin</option>
                         <option value="Other services" <%= place.category === 'Other services' ? 'selected' : '' %>>Other services</option>
                     </select>
                 </div>
 
-                  <div class="input-group mb-3">
+                <div class="input-group mb-3">
                 <span class="input-group-text gasp-5">
                         <i class="fa-solid fa-image"></i></span>
                     <input class="form-control" type="file" name="image" id="image">
-                </div>
+                </div> 
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" id="description" name="place[description]" required><%= place.description %></textarea>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="url">URL</label>
+                    <input class="form-control" type="url" id="url" name="place[url]"  value="<%= place.url ? place.url : 'https://' %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="number">Phonenumber</label>
+                    <input class="form-control" type="text" id="number" name="place[pnumber]" value="<%= place.pnumber ? place.pnumber : '' %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="place[email]" value="<%= place.email ? place.email : '' %>">
+                </div>
+
                 <div class="mb-3">
                     <button class="btn btn-info">Update Place</button>
                 </div>

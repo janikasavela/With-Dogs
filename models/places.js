@@ -24,9 +24,12 @@ const PlacesSchema = new Schema({
     },
     category: {
             type: String,
-            enum: ['Store', 'Grocery', 'Hiking', 'Hotel', 'Swimming place', 'Skiing', 'Restaraunt', 'Cafe', 'Other services'],
+            enum: ['Store', 'Hiking', 'Hotel', 'Swimming place', 'Skiing', 'Restaraunt', 'Cafe', 'Airbnb', 'Cabin', 'Other services'],
             required: true
     },
+    url: String,
+    pnumber: String,
+    email: String,
     description: String,
     location: String,
     author: {
