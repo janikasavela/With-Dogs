@@ -2,44 +2,111 @@
 
 <div id="map" style="width: 100%; height: 400px"></div>
 
-    <h1 class="text-center my-2 text-green shadow-sm">All Places</h1>
-    <p class="lead text-center  my-4">Our purpose is to make traveling with a dog easy and comfortable! Here you can see dog-friendly places added by our users. You can search for places by location or purpose.</p>
- 
-    <% for (let place of places) { %>
+<h1 class="text-center my-2 text-green shadow-sm">All Places</h1>
+<p class="lead text-center my-4">Our purpose is to make traveling with a dog easy and comfortable! Here you can see dog-friendly places added by our users. You can search for places by location or purpose.</p>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 mb-4">
+      <input class="form-control" type="text" id="location" placeholder="Search places by location or name">
+    </div>
+  </div>
+</div>
+
+  
+
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
+    const places = { features: <%- JSON.stringify(places) %>}
+  </script>
+  
+  <script src="/javascripts/clusterMap.js"></script>
+  
+  <div id="filtered-places"></div>
+
+<script>
+
+places.features.forEach(place => {
+      const card = `
         <div class="card mb-3 border-0">
-            <div class="row align-items-center">
-                <div class="col-md-4 d-flex justify-content-center">
-                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 250px; height: 250px; object-fit: cover;" alt="" src="<%=place.image.url%>">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body d-md-none">
-                        <h5 class="card-title text-center mb-3"><%=place.title %></h5>
-                        <p class="card-text text-center mb-3"><%=place.description%></p>
-                        <p class="card-text text-center mb-3">
-                            <small class="text-muted"><%= place.location%></small>
-                        </p>
-                        <a class="btn btn-gray d-flex mx-auto justify-content-center" href="/places/<%=place._id%>">View <%= place.title%></a>
-                    </div>
-                    <div class="card-body d-none d-md-block">
-                        <h5 class="card-title"><%=place.title %></h5>
-                        <p class="card-text"><%=place.description%></p>
-                        <p class="card-text">
-                            <small class="text-muted"><%= place.location%></small>
-                        </p>
-                        <a class="btn btn-gray" href="/places/<%=place._id%>">View <%= place.title%></a>
-                    </div>
-                </div>
+          <div class="row align-items-center">
+            <div class="col-md-4 d-flex justify-content-center">
+              <img class="img-fluid img-thumbnail rounded-circle" style="width: 250px; height: 250px; object-fit: cover;" alt="" src="${place.image.url}">
             </div>
+            <div class="col-md-8">
+              <div class="card-body d-md-none">
+                <h5 class="card-title text-center mb-3">${place.title}</h5>
+                <p class="card-text text-center mb-3">${place.description}</p>
+                <p class="card-text text-center mb-3">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray d-flex mx-auto justify-content-center" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+              <div class="card-body d-none d-md-block">
+                <h5 class="card-title">${place.title}</h5>
+                <p class="card-text">${place.description}</p>
+                <p class="card-text">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+            </div>
+          </div>
         </div>
         <hr>
-    <% } %>
-    
-    
+      `;
+      document.getElementById('filtered-places').insertAdjacentHTML('beforeend', card);
+    });
 
-            <script>
-                const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
-                const places = { features: <%- JSON.stringify(places) %>}
-              </script>
-              
 
-<script src="/javascripts/clusterMap.js"></script>
+  const searchInput = document.getElementById('location');
+
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    filteredPlaces = places.features.filter(place => place.location.toLowerCase().includes(searchTerm) || place.title.toLowerCase().includes(searchTerm));
+    // Tyhjennä näkyvät paikat
+    document.getElementById('filtered-places').innerHTML = '';
+    
+    // Lisää suodatetut paikat näkymään
+    filteredPlaces.forEach(place => {
+      const card = `
+        <div class="card mb-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-md-4 d-flex justify-content-center">
+              <img class="img-fluid img-thumbnail rounded-circle" style="width: 250px; height: 250px; object-fit: cover;" alt="" src="${place.image.url}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body d-md-none">
+                <h5 class="card-title text-center mb-3">${place.title}</h5>
+                <p class="card-text text-center mb-3">${place.description}</p>
+                <p class="card-text text-center mb-3">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray d-flex mx-auto justify-content-center" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+              <div class="card-body d-none d-md-block">
+                <h5 class="card-title">${place.title}</h5>
+                <p class="card-text">${place.description}</p>
+                <p class="card-text">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      `;
+      document.getElementById('filtered-places').insertAdjacentHTML('beforeend', card);
+    });
+  });
+
+  // Tarkista, onko hakukenttä tyhjä ja tyhjennä filteredPlaces
+  searchInput.addEventListener('change', () => {
+    if (searchInput.value === '') {
+      filteredPlaces = [];
+      document.getElementById('filtered-places').innerHTML = '';
+    }
+  });
+</script>
+
