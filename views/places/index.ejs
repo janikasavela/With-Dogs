@@ -13,6 +13,24 @@
   </div>
 </div>
 
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6 mb-4">
+        <select class="form-select" aria-label="Search by category" id="category">
+            <option selected value="">Search by category</option>
+            <option value="Store">Store</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Swimming place">Swimming place</option>
+            <option value="Skiing">Skiing</option>
+            <option value="Restaraunt">Restaraunt</option>
+            <option value="Cafe">Cafe</option>
+            <option value="Airbnb">Airbnb</option>
+            <option value="Cabin">Cabin</option>
+            <option value="Other services">Other services</option>
+          </select>      </div>
+    </div>
+  </div>
+
   
 
 <script>
@@ -60,10 +78,51 @@ places.features.forEach(place => {
 
 
   const searchInput = document.getElementById('location');
+  const select = document.getElementById('category');
 
   searchInput.addEventListener('input', () => {
     const searchTerm = searchInput.value.trim().toLowerCase();
     filteredPlaces = places.features.filter(place => place.location.toLowerCase().includes(searchTerm) || place.title.toLowerCase().includes(searchTerm));
+    // Tyhjennä näkyvät paikat
+    document.getElementById('filtered-places').innerHTML = '';
+    
+    // Lisää suodatetut paikat näkymään
+    filteredPlaces.forEach(place => {
+      const card = `
+        <div class="card mb-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-md-4 d-flex justify-content-center">
+              <img class="img-fluid img-thumbnail rounded-circle" style="width: 250px; height: 250px; object-fit: cover;" alt="" src="${place.image.url}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body d-md-none">
+                <h5 class="card-title text-center mb-3">${place.title}</h5>
+                <p class="card-text text-center mb-3">${place.description}</p>
+                <p class="card-text text-center mb-3">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray d-flex mx-auto justify-content-center" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+              <div class="card-body d-none d-md-block">
+                <h5 class="card-title">${place.title}</h5>
+                <p class="card-text">${place.description}</p>
+                <p class="card-text">
+                  <small class="text-muted">${place.location}</small>
+                </p>
+                <a class="btn btn-gray" href="/places/${place._id}">View ${place.title}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      `;
+      document.getElementById('filtered-places').insertAdjacentHTML('beforeend', card);
+    });
+  });
+
+  select.addEventListener('change', (event) => {
+    const searchTerm = event.target.value;
+    filteredPlaces = places.features.filter(place => place.category.includes(searchTerm));
     // Tyhjennä näkyvät paikat
     document.getElementById('filtered-places').innerHTML = '';
     
@@ -108,5 +167,13 @@ places.features.forEach(place => {
       document.getElementById('filtered-places').innerHTML = '';
     }
   });
+
+ /*   // Tarkista, onko hakukenttä tyhjä ja tyhjennä filteredPlaces
+   select.addEventListener('change', (event) => {
+    if (event.target.value === 'Store Hotel Swimming place Skiing Restaraunt Cafe Airbnb Cabin Other services') {
+      filteredPlaces = places.features;
+      document.getElementById('filtered-places').innerHTML = '';
+    }
+  }); */
 </script>
 
