@@ -16,11 +16,15 @@ const User = require ('./models/user')
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 
+const MongoDBStore = require("connect-mongo")(session)
+
 const userRoutes = require('./routes/users')
 const placeRoutes = require('./routes/places') 
 const reviewRoutes = require('./routes/reviews') 
+const dbUrl = process.env.DB_URL
+// const dbUrl 'mongodb://localhost:27017/places'
 
-mongoose.connect('mongodb://localhost:27017/places')
+mongoose.connect(dbUrl)
 
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "connection error:"))
@@ -40,7 +44,18 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize())
 app.use(helmet({contentSecurityPolicy: false}))
 
+const store = new MongoDBStore({
+    url: dbUrl,
+    secret: 'thisshouldbeabettersecret!',
+    touchAfter: 24 * 60 * 60
+})
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e)
+})
+
 const sessionConfig = {
+    store, 
     name: 'session',
     secret: 'thisshouldbeabettersecret!',
     resave: false,
