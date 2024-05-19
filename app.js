@@ -44,9 +44,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize())
 app.use(helmet({contentSecurityPolicy: false}))
 
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!'
+
 const store = new MongoDBStore({
     url: dbUrl,
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     touchAfter: 24 * 60 * 60
 })
 
@@ -57,7 +59,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store, 
     name: 'session',
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -89,8 +91,9 @@ app.use('/', userRoutes)
 app.use('/places', placeRoutes)
 app.use('/places/:id/reviews', reviewRoutes)
 
-app.listen(3000, () => {
-    console.log("Serving on port 3000")
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`)
 })
 
 app.get('/', (req, res) => {
