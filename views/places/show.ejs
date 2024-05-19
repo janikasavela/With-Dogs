@@ -1,10 +1,9 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 
-
 <div class="row">
-    <div class="col-6">
-        <div class="card mb-3 py-2">
+    <div class="col-md-6 mb-3">
+        <div class="card py-2">
             <img src="<%= place.image.url %>" class="card-img-top mx-auto" alt="..." style="max-width:70%;">
             <div class="card-body">
               <h5 class="card-title"><%= place.title %></h5>
@@ -34,13 +33,16 @@
             <% } %>
           </div>
   </div>
-  <div class="col-6">
-    <div id="map" style="width: 400px; height: 300px;"></div>
+  <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div id="map" style="height: 300px;"></div>
+            </div>
 
     <% if(currentUser) { %>
     <h2 class="my-2 text-green">Leave a review</h2>
     <form action="/places/<%= place._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-      <div>
+               <div class="col-md-12">
       <fieldset class="starability-basic">
         <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
         <input type="radio" id="first-rate1" name="review[rating]" value="1" />
