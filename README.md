@@ -3,9 +3,9 @@
 
 ## Esittely
 
-With Dogs on Oulun ammattikorkeakoulun 4. vuoden projektikurssilla tekemäni suurehko web-sovellus. Sain ideoida itse aiheen, ja se lähti puhtaasti omasta tarpeesta. Minulla on kaksi koiraa, ja reissaan niiden kanssa paljon. Monesti tuolla tien päällä miettii että olisipa joku paikka mistä voisi näppärästi tarkistaa onko lähellä esimerkiksi ruokapaikkoja mihin voisi ottaa koirat mukaan. Kesällä koiria ei voi kuumaan autoon jättää hetkeksikään. Siispä sain idean tehdä sovelluksen, johon käyttäjät voivat lisäillä koiraystävällisiä paikkoja kartalle, ja niitä voi suodattaa näkymään itselle sopivin hakukriteerein. 
+With Dogs on Oulun ammattikorkeakoulun 4. vuoden projektikurssilla tekemäni suurehko web-sovellus. Sain ideoida itse aiheen, ja se lähti puhtaasti omasta tarpeesta. Minulla on kaksi koiraa, ja reissaan niiden kanssa paljon. Monesti tuolla tien päällä miettii että olisipa joku sovellus mistä voisi näppärästi tarkistaa onko lähellä esimerkiksi ruokapaikkoja mihin voisi ottaa koirat mukaan. Kesällä koiria ei voi kuumaan autoon jättää hetkeksikään. Siispä sain idean tehdä sovelluksen, johon käyttäjät voivat lisäillä koiraystävällisiä paikkoja kartalle, ja niitä voi suodattaa näkymään itselle sopivin hakukriteerein. 
 
-Halusin tehdä sivustosta dynaamisen, mutta ilman Reactia, koska sillä olen yhden suurehkon web sovelluksen jo tehnyt. Käytin siis perinteisempiä keinoja ja sivujen reaaliaikainen päivitys ilman sivun uudelleenlatautumista on toteutettu puhtaasti Javascriptillä ja EJS tamplaattimoottorin avulla. Projekti oli melko laaja ja koodia tuli paljon, mutta nautin sen ideoimisesta ja työstämisestä. Web-kehitys kiinnostaa itseä paljon, ja uuden asian opettelua tuli tehtyä kivasti. Oli hyvä esimerkiksi perehtyä miten Javascriptillä mm. eventListener() functiolla napataan käyttäjän syötteitä, kun Reactilla on ollut hieman eri syntaksit.
+Halusin tehdä sivustosta dynaamisen, mutta ilman Reactia, koska sillä olen yhden suurehkon web sovelluksen jo tehnyt. Käytin siis perinteisempiä keinoja ja sivujen reaaliaikainen päivitys ilman sivun uudelleenlatautumista on toteutettu puhtaasti Javascriptillä ja EJS templaattimoottorin avulla. Web-kehitys kiinnostaa itseä paljon, ja uuden asian oppimista tuli kivasti. Halusin tehdä projektin ammattimaisesti alusta loppuun, joten suoritin samalla Udemyn kautta Colt Steelen The Web Developer Bootcamp 2024 kurssia, jossa tehtiin hieman samanlaista projektia. Katsoin kurssin videot alusta loppuun ja kirjoitin kaikki koodit myös alusta loppuun itse. En siis kopioinut valmista koodia, vaan seurasin perässä ja muokkasin tehdessä samalla koodia omiin tarpeisiin sopivaksi. Projektissa on siis myös paljon asioita mitä ei kurssilla selitetty. Kurssilla oli kuitenkin todella laajasti ja hyvin selitetty Web kehityksen perusteet ja sain siitä paljon oppia tulevaisuutta ajatellen. Linkki kurssiin: https://www.udemy.com/course/the-web-developer-bootcamp/?couponCode=LEADERSALE24A
 
 ![alt text](image.png)
 ##### Kuva 1: Käyttöliittymän etusivu
@@ -28,27 +28,27 @@ Yläpalkista löytyvät linkit etusivulle, käyttäjän rekisteröitymiseen ja s
 ##### Kuva 2: Kartta
 
 
-### Endpointit
-
-Osa päätepisteistä kuten /places/new on salattu token-pohjaisella todennuksella. Tunnusteen käyttöiäksi on määritetty 120 minuuttia. Tämän jälkeen kirjautumistiedot tulee syöttää uudelleen, jos haluaa päästä käsiksi suojattuihin päätepisteisiin.
 
 ### Muu teknologia ja kehitysympäristö
 
-Kehitysympäristönä toimi Visual Studio Code (kuva 3). Backend sekä frontend toteutettiin Node.js- ja Express.js- teknologioilla, joissa ohjelmointikielenä toimi Javascript. Muita käytettyjä ohjelmointikieliä oli HTML, CSS sekä EJS. Tietokantana toimi MongoDB. Versionhallintana GitHub-työympäristö.
+Kehitysympäristönä toimi Visual Studio Code (kuva 3). Backend sekä frontend toteutettiin Node.js- ja Express.js- teknologioilla, joissa ohjelmointikielenä toimi Javascript ja EJS. Muita käytettyjä ohjelmointikieliä oli HTML sekä CSS. Tietokantana toimi MongoDB. Versionhallintana GitHub-työympäristö. 
+
+Osa päätepisteistä kuten /places/new on salattu ja vaatii todennuksen. 
 
 ![alt text](kuva3.png)
 ##### Kuva 3: Paikan tarkemmat tiedot
 
 
 ### Projekti pilvipalvelussa
-Sovellus on käyttöönotettu ja löytyy osoitteesta:
-https://with-dogs.onrender.com/
+Sovellus on käyttöönotettu ja löytyy osoitteesta: https://with-dogs.onrender.com/
+
 Sivusto saattaa olla hieman hidas, koska se on julkaistu ilmaispalveluna Renderin kautta. Tietokantana julkaistussa versiossa toimii Mongo Atlas. 
+
 ---
 
 ## Projektin testaus
-Tavoitteena oli kirjoittaa projektin testit ohjelmistokoodiksi, mutta sen osalta minulla loppui aika kesken. Aion sen kuitenkin vielä tehdä ja testikoodit lisätä projektin kylkeen. Tein kuitenkin systeemitestausta, eli testasin projektia käsityönä. Yritin ottaa mahdolliset virhetilanteet huomioon koodissa ja virheenhallintaa tulikin tehtyä useampi tunti. 
+Tavoitteena oli kirjoittaa projektin testit ohjelmistokoodiksi, mutta sen osalta minulla loppui aika kesken. Aion sen kuitenkin vielä tehdä ja testikoodit lisätä projektin kylkeen heti kun ehdin. Tein kuitenkin systeemitestausta, eli testasin projektia käsityönä. Yritin ottaa mahdolliset virhetilanteet huomioon koodissa ja virheenhallintaa tulikin tehtyä useampi tunti. 
 
 ---
 ## Yhteenveto
-Projektissa oli paljon tekemistä, mutta nautin sen työstämisestä suuresti. Myös oppimista ja kehittymistä tapahtui huomasti projektin aikana, ja paljon tuli perehdyttyä uusiin asioihin. Muun muassa MongoDB oli itselle ihan uusi työkalu, aiemmin käyttänyt tietokantana MySQL:lää. Lopputulokseen olen erittäin tyytyväinen. Mielestäni sivusto on helppo käyttää ja ymmärtää, toiminnallisuudet ovat näppärät ja toimivat sekä ulkoasu silmää miellyttävä. Vastaavaa palautetta olen saanut läheisiltäni, joille olen sovellusta esitellyt. 
+Projektissa oli paljon tekemistä, mutta nautin sen työstämisestä suuresti. Myös oppimista ja kehittymistä tapahtui huomasti projektin aikana, ja paljon tuli perehdyttyä uusiin asioihin. Muun muassa MongoDB oli itselle ihan uusi työkalu, aiemmin käyttänyt tietokantana MySQL:lää. Lopputulokseen olen erittäin tyytyväinen. Mielestäni sivusto on helppo käyttää ja ymmärtää, toiminnallisuudet ovat näppärät ja toimivat sekä käyttöliittymä silmää miellyttävä. Vastaavaa palautetta olen saanut läheisiltäni, joille olen sovellusta esitellyt. 
