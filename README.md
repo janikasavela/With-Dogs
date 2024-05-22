@@ -31,11 +31,48 @@ Yläpalkista löytyvät linkit etusivulle, käyttäjän rekisteröitymiseen ja s
 
 
 
-### Muu teknologia ja kehitysympäristö
+### Teknologia, työkalut ja kehitysympäristö
 
-Kehitysympäristönä toimi Visual Studio Code (kuva 3). Backend sekä frontend toteutettiin Node.js- ja Express.js- teknologioilla, joissa ohjelmointikielenä toimi Javascript ja EJS. Muita käytettyjä ohjelmointikieliä oli HTML sekä CSS. Tietokantana toimi MongoDB. Versionhallintana GitHub-työympäristö. 
+Kehitysympäristönä toimi Visual Studio Code (kuva 3). Backend sekä frontend toteutettiin Node.js- ja Express.js- teknologioilla, joissa ohjelmointikielenä toimi Javascript ja EJS. Muita käytettyjä ohjelmointikieliä oli HTML5 sekä CSS3. Tietokantana toimi MongoDB. Versionhallintana GitHub-työympäristö. Karttanäkymät on luotu MapBoxilla.
 
 Osa päätepisteistä kuten /places/new on salattu ja vaatii todennuksen. 
+
+Muita käytettyjä teknologioita, työkaluja ja aiheita mihin kurssilla ja projektin parissa tuli perehdyttyä: 
+- Flexbox
+- Responsiivinen käyttöliittymä
+- Asynkroninen JavaScript - Promiset, async/await jne.
+- AJAX ja yksisivuiset sovellukset
+- Bootstrap 4 ja 5
+- SASS (https://sass-lang.com/)
+- Koala (http://koala-app.com/)
+- DOM-muokkaus (Document Object Model)
+- Unix (Komentorivi) -komennot
+- NPM
+- Templaten käyttö
+- REST
+- SQL vs. NoSQL -tietokannat
+- Skeeman suunnittelu
+- Mongoose ja kaavat (Schema)
+- Autentikointi alusta alkaen
+- Evästeet ja istunnot (Cookies & Sessions)
+- Authorisointi
+- Yleiset tietoturvaongelmat - SQL-injektio, XSS jne.
+- Kehittäjän parhaat käytännöt
+- Sovellusten julkaisu
+- Pilvitietokannat
+- Kuvan lataus ja tallennus
+- Kartat ja geokoodaus
+- Morgan (https://github.com/expressjs/morgan)
+- Middleware
+- JOI (https://joi.dev/api/?v=17.13.0)
+- Cookie-parser (https://www.npmjs.com/package/cookie-parser)
+- Connect-flash (https://github.com/jaredhanson/connect-flash)
+- Bcrypt (https://github.com/kelektiv/node.bcrypt.js)
+- Starability (https://github.com/LunarLogic/starability)
+- Multer (https://github.com/expressjs/multer)
+- Cloudinary (https://cloudinary.com/)
+- Dotenv (https://github.com/motdotla/dotenv)
+- Helmet (https://helmetjs.github.io/)
 
 ![alt text](kuva3.png)
 ##### Kuva 3: Paikan tarkemmat tiedot
