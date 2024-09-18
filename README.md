@@ -94,4 +94,4 @@ Tavoitteena oli kirjoittaa projektin testit ohjelmistokoodiksi, mutta sen osalta
 
 ##### Kuva 3: Paikan haku
 
-Projektissa oli paljon tekemistä, mutta nautin sen työstämisestä suuresti. Myös oppimista ja kehittymistä tapahtui huomasti projektin aikana, ja paljon tuli perehdyttyä uusiin asioihin. Muun muassa MongoDB oli itselle ihan uusi työkalu, aiemmin käyttänyt tietokantana MySQL:lää. Lopputulokseen olen erittäin tyytyväinen. Mielestäni sivusto on helppo käyttää ja ymmärtää, toiminnallisuudet ovat näppärät ja toimivat sekä ulkoasu silmää miellyttävä. Vastaavaa palautetta olen saanut läheisiltäni, joille olen sovellusta esitellyt.
+Projektissa oli paljon tekemistä, mutta nautin sen työstämisestä suuresti. Myös oppimista ja kehittymistä tapahtui huimasti projektin aikana, ja paljon tuli perehdyttyä uusiin asioihin. Muun muassa MongoDB oli itselle ihan uusi työkalu, aiemmin käyttänyt tietokantana MySQL:lää. Lopputulokseen olen erittäin tyytyväinen. Mielestäni sivusto on helppo käyttää ja ymmärtää, toiminnallisuudet ovat näppärät ja toimivat sekä ulkoasu silmää miellyttävä. Vastaavaa palautetta olen saanut läheisiltäni, joille olen sovellusta esitellyt.
