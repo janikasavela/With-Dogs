@@ -44,7 +44,7 @@ Muita käytettyjä teknologioita, työkaluja ja aiheita mihin kurssilla ja proje
 - DOM-muokkaus (Document Object Model)
 - Unix (Komentorivi) -komennot
 - NPM
-- Templaten käyttö
+- Templaten käyttö (EJS)
 - REST
 - SQL vs. NoSQL -tietokannat
 - Skeeman suunnittelu
