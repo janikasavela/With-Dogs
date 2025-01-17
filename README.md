@@ -6,7 +6,7 @@
 
 Sovellus on käyttöönotettu ja löytyy osoitteesta:
 https://with-dogs.onrender.com/
-Sivusto saattaa olla hieman hidas, koska se on julkaistu ilmaispalveluna Renderin kautta. Tietokantana julkaistussa versiossa toimii Mongo Atlas.
+Sivusto saattaa olla hieman hidas, etenkin avautumisen yhteydessä, koska se on julkaistu ilmaispalveluna Renderin kautta. Tietokantana julkaistussa versiossa toimii Mongo Atlas.
 
 ---
 
