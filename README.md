@@ -2,6 +2,14 @@
 
 ## _Tekijä: Janika Savela_
 
+### Projekti pilvipalvelussa
+
+Sovellus on käyttöönotettu ja löytyy osoitteesta:
+https://with-dogs.onrender.com/
+Sivusto saattaa olla hieman hidas, koska se on julkaistu ilmaispalveluna Renderin kautta. Tietokantana julkaistussa versiossa toimii Mongo Atlas.
+
+---
+
 ## Esittely
 
 With Dogs on Oulun ammattikorkeakoulun 4. vuoden projektikurssilla tekemäni suurehko web-sovellus. Sain ideoida itse aiheen, ja se lähti puhtaasti omasta tarpeesta. Minulla on kaksi koiraa, ja reissaan niiden kanssa paljon. Monesti tuolla tien päällä miettii että olisipa joku paikka mistä voisi näppärästi tarkistaa onko lähellä esimerkiksi ruokapaikkoja mihin voisi ottaa koirat mukaan. Kesällä koiria ei voi kuumaan autoon jättää hetkeksikään. Siispä sain idean tehdä sovelluksen, johon käyttäjät voivat lisäillä koiraystävällisiä paikkoja kartalle, ja niitä voi suodattaa näkymään itselle sopivin hakukriteerein.
@@ -74,13 +82,6 @@ Muita käytettyjä teknologioita, työkaluja ja aiheita mihin kurssilla ja proje
 
 ##### Kuva 3: Paikan tarkemmat tiedot
 
-### Projekti pilvipalvelussa
-
-Sovellus on käyttöönotettu ja löytyy osoitteesta:
-https://with-dogs.onrender.com/
-Sivusto saattaa olla hieman hidas, koska se on julkaistu ilmaispalveluna Renderin kautta. Tietokantana julkaistussa versiossa toimii Mongo Atlas.
-
----
 
 ## Projektin testaus
 
